@@ -4,6 +4,40 @@
   import {ref} from 'vue'
 
   const user = ref("John Doe");
+  const userProfile = ref(
+    [
+      {
+        user: "John Doe",
+        id: "12381237112",
+        balance: 3002300
+      },
+      {
+        user: "Abir Shah",
+        id: "12381247112",
+        balance: 30300
+      },
+      {
+        user: "Maruf Khan",
+        id: "12381237142",
+        balance: 102300
+      },
+      {
+        user: "Jubaer Ahmed",
+        id: "12321237112",
+        balance: 52300
+      },
+      {
+        user: "Hayder Ali",
+        id: "12381217112",
+        balance: 3000300
+      },
+      {
+        user: "Abdur Rahman",
+        id: "12381221142",
+        balance: 10200300
+      }
+    ]
+  )
 </script>
 
 <template>
@@ -19,21 +53,11 @@
     </div>
     
     <div class="AccountList">
-      <Accounts :userName="user"
-      :bankId="34523752355"
-      :bankBalance="2000000"/>
-
-      <Accounts :userName="user"
-      :bankId="34523752355"
-      :bankBalance="2000000"/>
-
-      <Accounts :userName="user"
-      :bankId="34523752355"
-      :bankBalance="2000000"/>
-
-      <Accounts :userName="user"
-      :bankId="34523752355"
-      :bankBalance="2000000"/>
+      <li v-for="items in userProfile">
+        <Accounts :userName="items.user"
+          :bankId="items.id"
+          :bankBalance="items.balance"/>
+      </li>
     </div>
 
     </div>
