@@ -1,23 +1,37 @@
 <script setup>
+import { ref } from 'vue'
 
+const props = defineProps({
+    history:Boolean
+//   shopNumber:String
+});
+
+    const navFlag = ref(props.history)
+
+    const emit = defineEmits(['response'])
+    const historyButtonClicked = ()=>{
+        if(navFlag.value = true){
+            emit('response', false)
+        }else{
+            emit('response', true)
+        }
+    }
 </script>
 
 <template>
     <div class="navBack">
         <div  class="navTitle">
-            <p >Drobbo<span class="navTitleSpan">Ponno</span></p>
+            <p>Drobbo<span class="navTitleSpan">Ponno</span></p>
         </div>
         <div class="navCenter">
             <!-- some free space for future works -->
         </div>
         <div class="navButtons">
             
-            <div class="navButtonPaddin">
-                <img  class="notificationButton" src="../assets/notification.png" title="notifications" alt="notification"/>
+            <div @click="historyButtonClicked" class="navButtonPaddin">
+                <img v-if="history" class="notificationButton" src="../assets/transaction.png" title="transaction history" alt="notification"/>
+                <img v-else  class="notificationButton" src="../assets/customer.png" title="All Accounts" alt="notification"/>
             </div>
-            
-      
-
             <!-- <p>John Doe</p> -->
         </div>
     </div>
